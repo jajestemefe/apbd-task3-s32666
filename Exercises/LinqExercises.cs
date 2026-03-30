@@ -18,7 +18,7 @@ public sealed class LinqExercises
     {
         //throw NotImplemented(nameof(Task01_StudentsFromWarsaw));
         return UniversityData.Students.Where(s => s.City == "Warsaw").Select(e =>
-            $"{e.IndexNumber} {e.FirstName} {e.LastName}").ToList();
+            $"{e.IndexNumber} {e.FirstName} {e.LastName} - {e.City}").ToList();
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public sealed class LinqExercises
     {
         //throw NotImplemented(nameof(Task04_FirstAnalyticsCourse));
         return [UniversityData.Courses.Where(c => c.Category == "Analytics").Select(
-            e => $"{e.Title}").FirstOrDefault() ?? "No Analytics course found"];
+            e => $"{e.Title} - {e.StartDate:yyyy-MM-dd}").FirstOrDefault() ?? "No Analytics course found"];
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public sealed class LinqExercises
     {
         //throw NotImplemented(nameof(Task09_ThreeNewestEnrollments));
         return UniversityData.Enrollments.OrderByDescending(e => e.EnrollmentDate)
-            .Select(e => $"{e.EnrollmentDate}").Take(3);
+            .Select(e => $"{e.EnrollmentDate:yyyy-MM-dd} | Student: {e.StudentId} | Course: {e.CourseId}").Take(3);
     }
 
     /// <summary>
